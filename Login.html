@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>
+    Login
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="Login.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="Login-form">
+        <form name="loginForm">
+            <h1>Login</h1>
+            <div class="textbox">
+                <i class="fa fa-user"></i>
+                <input type="text" id="Username" name="Username" placeholder="Username" value="" required>
+            </div>
+            <div class="textbox">
+                <i class="fa fa-lock"></i>    
+                <input type="password" id="Password" name="Password" placeholder="Password" minlength="8" value="" required>
+            </div>
+            <p id="err" style="color:red"></p>
+            <input class="btn" type="submit" onclick="verify(); return false;" id="Login" name="Login" value="Login"></a>
+            <a href="Signup.html"><input class="btn" type="button" id="SignUp" name="SignUp" value="Sign-up"></a>
+        </form>
+    </div>
+
+    <script  src="Signup.js"></script>
+    <script  src="Login.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+body{
+    margin:0;
+    padding:0;
+    background-image: url('images/bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+	background-size: 100% 100%;
+}
+
+.SignupForm{
+    width: 300px;
+    background: rgba(0,0,0,0.5);
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: black;
+    padding: 20px 40px;  
+    }
+
+.SignupForm h1{
+    color:white;
+    margin: 0 0 20px 0;
+    font-weight: 300;
+    font-size: 28px;
+}
+.textbox{
+    margin-bottom: 20px;
+}
+input[type="text"], input[type="password"], input[type="email"]{
+    display:block;
+    margin-bottom:20px;
+    background: none;
+    padding: 4px;
+    border:none;
+    border-bottom: 1px solid #AAA;
+    width:100%;
+    box-sizing: border-box;
+    font-weight: bold;
+    color: #16a085;
+    font-size: 14px;
+}
+input[type="submit"]{
+    margin-top: 28px;
+    width: 120px;
+    height: 32px;
+    background: #16a085;
+    border: none;
+    border-radius: 2px;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+    border-bottom: 2px solid #16a085;
+    color: #16a085;
+    outline: none;
+}
+::placeholder{
+    color:grey;
+    font-weight: bold;
+    opacity: 1;
+}
+#message {
+    color: red;
+    font-size: 14px;
+}
