@@ -13,6 +13,7 @@ window.onload = display;
         var count=0;
         for(let i = 0; i < users.length; i++){
             if(loginUserName == users[i].username && loginPass == users[i].pass){
+                window.sessionStorage.setItem("user", JSON.stringify(users[i]));
                 window.document.location = 'RegistrationForm.html';
                 count++;
             }

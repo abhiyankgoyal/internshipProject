@@ -9,14 +9,26 @@
 </head>
 
 <body>
+	<div class="header">
+		<img src="images/SimptionLogo.jpg" alt="logo" id="logo">
+		<div class="menu">
+			<ul class="nav">
+				<li><a onclick="logout()">Logout</a></li>
+				<li>
+					<p id="user"></p>
+				</li>
+			</ul>
+		</div>
+	</div>
+
     <div class="studentsList">
-        <table id = "student_table" class="students" style="width:100%">
+        <table id = "student_table" class="students" >
             <tr>
                 <th>S.No</th>
                 <th>Student Name</th>
                 <th>Father's Name</th>
                 <th>Class</th>
-                <th>Father's Contact No.</th>
+                <th style="width: 100px">Father's Contact No.</th>
                 <th>Registration date</th>
                 <th>Modify</th>
                 <th>Make Admission</th>
@@ -24,7 +36,10 @@
                 <th>Delete</th>
             </tr>
         </table>
-
+    </div>
+    <div class="footer">
+		<p><b>&copy Simption tech pvt ltd</b></p>
+	</div>
     <script src = "registrationList.js"></script>
 </body>
 

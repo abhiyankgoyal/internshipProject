@@ -45,7 +45,18 @@ function getStudentDetails() {
     }
 
 }
-window.onload = getStudentDetails;
+window.onload = getUser;
+
+function logout(){
+    window.sessionStorage.removeItem("user");
+    document.location = 'Login.html';
+}
+
+function getUser(){
+    user = JSON.parse(window.sessionStorage.getItem("user"));
+    document.getElementById("user").innerHTML= "Welcome " + user.name;
+    getStudentDetails();
+}
 
 function updateStudent() {
     var regNo;

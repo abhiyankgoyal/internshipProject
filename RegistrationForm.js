@@ -1,10 +1,9 @@
-class Student{
+class Student {
 
     constructor(registrationNo, category, division, name, dob, gender, admissionDate, admissionType, feeCategory,
         busService, hostel, contactNo, address, landmark, place, district, state, pincode, photo, registrationFees,
         fatherName, fatherContactNo, fatherPhoto, motherName, motherContactNo, motherPhoto, parentAddress,
-        parentLandmark, parentPlace, parentDistrict, parentState, parentPincode)
-        {
+        parentLandmark, parentPlace, parentDistrict, parentState, parentPincode) {
 
         this.registrationNo = registrationNo;
         this.category = category;
@@ -46,17 +45,29 @@ var students = [];
 function getRegistrationNumber() {
     studentsJSON = window.localStorage.getItem("students");
     students = JSON.parse(studentsJSON);
-    if(students.length == 0){
+    if (students.length == 0) {
         document.getElementById("registrationNo").value = 1;
     }
-    else{
+    else {
         console.log(students.length);
         document.getElementById("registrationNo").value = Number(students[students.length - 1].registrationNo) + 1;
     }
-}
-window.onload = getRegistrationNumber();
 
-function createStudent(){
+}
+window.onload = getUser();
+
+function getUser(){
+    user = JSON.parse(window.sessionStorage.getItem("user"));
+    document.getElementById("user").innerHTML= "Welcome " + user.name;
+    getRegistrationNumber();
+}
+
+function logout(){
+    window.sessionStorage.removeItem("user");
+    document.location = 'Login.html';
+}
+
+function createStudent() {
 
     var data1 = document.getElementById("registrationNo").value;
     var data2 = document.getElementById("studentNewOld").value;
@@ -91,8 +102,8 @@ function createStudent(){
     var data31 = document.getElementById("parentState").value;
     var data32 = document.getElementById("parentPincode").value;
 
-    var student = new Student(data1,data2,data3,data4,data5,data6,data7,data8,data9,data10,data11,data12,data13,data14,data15,data16,data17,data18,data19,data20,data21,data22,data23,data24,data25,data26,data27,data28,data29,data30,data31,data32);
-    
+    var student = new Student(data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11, data12, data13, data14, data15, data16, data17, data18, data19, data20, data21, data22, data23, data24, data25, data26, data27, data28, data29, data30, data31, data32);
+
     students.push(student);
     window.localStorage.setItem("students", JSON.stringify(students));
     if (window.localStorage.getItem("students") != null && window.localStorage.getItem("students").length > 0) {
