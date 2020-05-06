@@ -4,7 +4,7 @@
 	<title>
 		Registration Form
 	</title>
-	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel="stylesheet" href="registrationFormstyle.css" type="text/css">
 </head>
 
 <body>
@@ -16,6 +16,8 @@
 				<li>
 					<p id="user"></p>
 				</li>
+				<li><a href="admissionList.html">Admitted Students</a></li>
+				<li><a href="registrationList.html">Registered Students</a></li>
 			</ul>
 		</div>
 	</div>
@@ -194,10 +196,6 @@
 							<input type="number" id="pincode" name="pincode" placeholder="pincode">
 						</div>
 						<div class="component">
-							<label for="photo">photo</label><br>
-							<input type="file" id="photo" name="photo">
-						</div>
-						<div class="component">
 							<label for="registrationFees">Registration fees</label><span class="asterik">*</span><br>
 							<input type="number" id="registrationFees" name="registrationFees"
 								placeholder="Registration fees" required>
@@ -213,32 +211,22 @@
 					</legend>
 					<div class="component-section">
 						<div class="component">
-							<label for="fatherName">Father name</label><br>
+							<label for="fatherName">Father's name</label><br>
 							<input type="text" id="fatherName" name="fatherName" placeholder="father name">
 						</div>
 						<div class="component">
-							<label for="fatherContact">Father Contact no.</label><br>
+							<label for="fatherContact">Father's Contact no.</label><br>
 							<input type="number" id="fatherContact" name="fatherContact"
 								placeholder="Father Contact no.">
 						</div>
 						<div class="component">
-							<label for="fatherPhoto">Father photo</label><br>
-							<input type="file" id="fatherPhoto" name="fatherPhoto">
-						</div>
-					</div>
-					<div class="component-section">
-						<div class="component">
-							<label for="motherName">Mother name</label><br>
+							<label for="motherName">Mother's name</label><br>
 							<input type="text" id="motherName" name="motherName" placeholder="Mother name">
 						</div>
 						<div class="component">
-							<label for="motherContact">Mother Contact no.</label><br>
+							<label for="motherContact">Mother's Contact no.</label><br>
 							<input type="number" id="motherContact" name="motherContact"
 								placeholder="Mother Contact no.">
-						</div>
-						<div class="component">
-							<label for="motherPhoto">Mother photo</label><br>
-							<input type="file" id="motherPhoto" name="motherPhoto">
 						</div>
 					</div>
 					<div class="component-section">
@@ -311,12 +299,12 @@
 			</div>
 			<center>
 				<div class="submit">
-					<a href=""><input type="submit" id="submit" name="submit"></a>
+					<input type="submit" id="submit" name="submit">
 				</div>
 			</center>
 		</div>
 	</form>
-	<div class="footer">
+	<div class="footer" id="footer">
 		<p><b>&copy Simption tech pvt ltd</b></p>
 	</div>
 	<script src="RegistrationForm.js"></script>

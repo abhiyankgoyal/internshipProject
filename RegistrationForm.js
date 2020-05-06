@@ -1,9 +1,9 @@
 class Student {
 
     constructor(registrationNo, category, division, name, dob, gender, admissionDate, admissionType, feeCategory,
-        busService, hostel, contactNo, address, landmark, place, district, state, pincode, photo, registrationFees,
-        fatherName, fatherContactNo, fatherPhoto, motherName, motherContactNo, motherPhoto, parentAddress,
-        parentLandmark, parentPlace, parentDistrict, parentState, parentPincode) {
+        busService, hostel, contactNo, address, landmark, place, district, state, pincode, registrationFees,
+        fatherName, fatherContactNo, motherName, motherContactNo, parentAddress, parentLandmark, parentPlace, 
+        parentDistrict, parentState, parentPincode) {
 
         this.registrationNo = registrationNo;
         this.category = category;
@@ -23,14 +23,11 @@ class Student {
         this.district = district;
         this.state = state;
         this.pincode = pincode;
-        this.photo = photo;
         this.registrationFees = registrationFees;
         this.fatherName = fatherName;
         this.fatherContactNo = fatherContactNo;
-        this.fatherPhoto = fatherPhoto;
         this.motherName = motherName;
         this.motherContactNo = motherContactNo;
-        this.motherPhoto = motherPhoto;
         this.parentAddress = parentAddress;
         this.parentLandmark = parentLandmark;
         this.parentPlace = parentPlace;
@@ -45,14 +42,14 @@ var students = [];
 function getRegistrationNumber() {
     studentsJSON = window.localStorage.getItem("students");
     students = JSON.parse(studentsJSON);
-    if (students.length == 0) {
+    if (students == null || students.length == 0) {
+        students = [];
         document.getElementById("registrationNo").value = 1;
     }
     else {
         console.log(students.length);
         document.getElementById("registrationNo").value = Number(students[students.length - 1].registrationNo) + 1;
     }
-
 }
 window.onload = getUser();
 
@@ -87,14 +84,11 @@ function createStudent() {
     var data16 = document.getElementById("district").value;
     var data17 = document.getElementById("state").value;
     var data18 = document.getElementById("pincode").value;
-    var data19 = document.getElementById("photo").value;
     var data20 = document.getElementById("registrationFees").value;
     var data21 = document.getElementById("fatherName").value;
     var data22 = document.getElementById("fatherContact").value;
-    var data23 = document.getElementById("fatherPhoto").value;
     var data24 = document.getElementById("motherName").value;
     var data25 = document.getElementById("motherContact").value;
-    var data26 = document.getElementById("motherPhoto").value;
     var data27 = document.getElementById("parentAddress").value;
     var data28 = document.getElementById("parentlandmark").value;
     var data29 = document.getElementById("parentPlace").value;
@@ -102,7 +96,7 @@ function createStudent() {
     var data31 = document.getElementById("parentState").value;
     var data32 = document.getElementById("parentPincode").value;
 
-    var student = new Student(data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11, data12, data13, data14, data15, data16, data17, data18, data19, data20, data21, data22, data23, data24, data25, data26, data27, data28, data29, data30, data31, data32);
+    var student = new Student(data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11, data12, data13, data14, data15, data16, data17, data18, data20, data21, data22, data24, data25, data27, data28, data29, data30, data31, data32);
 
     students.push(student);
     window.localStorage.setItem("students", JSON.stringify(students));

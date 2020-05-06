@@ -2,9 +2,9 @@
 
 <head>
     <title>
-        RegistrationFormUpdate
+        Admission
     </title>
-    <link rel="stylesheet" href="registrationFormStyle.css" type="text/css">
+    <link rel="stylesheet" href="admissionPageStyle.css" type="text/css">
 </head>
 
 <body>
@@ -21,17 +21,12 @@
             </ul>
         </div>
     </div>
-
     <div class="heading" style="height:80px">
-
         <div>
-            <h1>Update Student Details</h1>
+            <h1>Details of the student</h1>
         </div>
     </div>
-    <div>
-        <img src="images/img1.jpg" alt="students" id="studentimage" width="25%" style="float:right">
-    </div>
-    <form action="" method="POST" name="RegistrationForm" onsubmit="updateStudent(); return false;">
+    <form onsubmit="uploadDocuments(); return false;" name="DetailsOfStudent">
         <div>
             <div class="component-collection">
                 <fieldset>
@@ -197,6 +192,7 @@
                             <label for="pincode">pincode</label><br>
                             <input type="number" id="pincode" name="pincode" placeholder="pincode">
                         </div>
+
                         <div class="component">
                             <label for="registrationFees">Registration fees</label><span class="asterik">*</span><br>
                             <input type="number" id="registrationFees" name="registrationFees"
@@ -204,7 +200,7 @@
                         </div>
                     </div>
                 </fieldset>
-            </div>
+            </div><br>
 
             <div class="component-collection">
                 <fieldset>
@@ -238,7 +234,7 @@
                         </div>
                         <div class="component">
                             <label for="parentLandmark">landmark</label><br>
-                            <input type="text" id="parentLandmark" name="parentLandmark" placeholder="Landmark">
+                            <input type="text" id="parentLandmark" name="parentLandmark" placeholder="landmark">
                         </div>
                         <div class="component">
                             <label for="parentPlace">place</label><br>
@@ -298,6 +294,76 @@
                         </div>
                     </div>
                 </fieldset>
+            </div><br>
+
+            <div class="component-collection">
+                <fieldset>
+                    <legend>
+                        <h2>Documents Upload</h2>
+                    </legend>
+                    <div class="component-section">
+                        <div class="component">
+                            <label for="studentPhoto">Student's photo</label><br>
+                            <input type="file" multiple id="studentPhoto" name="studentPhoto">
+                        </div>
+                        <div class="component">
+                            <label for="studentAadhaarPhoto">Student's Aadhaar photo</label><br>
+                            <input type="file" multiple id="studentAadhaarPhoto" name="studentAadhaarPhoto">
+                        </div>
+                        <div class="component">
+                            <label for="studentDobPhoto">DOB photo</label><br>
+                            <input type="file" multiple id="studentDobPhoto" name="studentDobPhoto">
+                        </div>
+                        <div class="component">
+                            <label for="studentOtherDocumentPhoto">Other Document</label><br>
+                            <input type="file" mulitiple id="studentOtherDocumentPhoto"
+                                name="studentOtherDocumentPhoto">
+                        </div>
+                    </div>
+                    <div class="component-section">
+                        <div class="component">
+                            <label for="fatherPhoto">Father photo</label><br>
+                            <input type="file" multiple id="fatherPhoto" name="fatherPhoto">
+                        </div>
+                        <div class="component">
+                            <label for="fatherAadhaarPhoto">Father's Aadhaar photo</label><br>
+                            <input type="file" multiple id="fatherAadhaarPhoto" name="fatherAadhaarPhoto">
+                        </div>
+                        <div class="component">
+                            <label for="fatherOtherDocumentPhoto">Other Document</label><br>
+                            <input type="file" multiple id="fatherOtherDocumentPhoto" name="fatherOtherDocumentPhoto">
+                        </div>
+                    </div>
+                    <div class="component-section">
+                        <div class="component">
+                            <label for="motherPhoto">Mother's photo</label><br>
+                            <input type="file" multiple id="motherPhoto" name="motherPhoto">
+                        </div>
+                        <div class="component">
+                            <label for="motherAadhaarPhoto">Mother's Aadhaar photo</label><br>
+                            <input type="file" multiple id="motherAadhaarPhoto" name="motherAadhaarPhoto">
+                        </div>
+                        <div class="component">
+                            <label for="motherOtherDocumentPhoto">Other Document</label><br>
+                            <input type="file" multiple id="motherOtherDocumentPhoto" name="motherOtherDocumentPhoto">
+                        </div>
+                    </div>
+                    <div class="component-section">
+                        <div class="component">
+                            <label for="guardianPhoto">Guardian's photo</label><br>
+                            <input type="file" multiple id="guardianPhoto" name="guardianPhoto">
+                        </div>
+                        <div class="component">
+                            <label for="guardianAadhaarPhoto">Guardian's Aadhaar photo</label><br>
+                            <input type="file" multiple id="guardianAadhaarPhoto" name="guardianAadhaarPhoto">
+                        </div>
+                        <div class="component">
+                            <label for="guardianOtherDocumentPhoto">Other Document</label><br>
+                            <input type="file" multiple id="guardianOtherDocumentPhoto"
+                                name="guardianOtherDocumentPhoto">
+                        </div>
+                    </div>
+                </fieldset>
             </div>
             <center>
                 <div class="submit">
@@ -310,6 +376,8 @@
         <p><b>&copy Simption tech pvt ltd</b></p>
     </div>
     <script src="registrationFormUpdate.js"></script>
+    <script src="admissionPage.js"></script>
+
 </Body>
 
 </html>

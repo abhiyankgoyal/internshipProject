@@ -53,13 +53,12 @@ function validate() {
         else {
             return false;
         }
-
         console.log(users);
         window.localStorage.setItem("users", JSON.stringify(users));
         alert('account created successfully');
         document.location = 'Login.html';
     }
-    
+
 }
 
 

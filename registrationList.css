@@ -54,11 +54,12 @@ ul.nav{
 }
 tr {
     border-bottom: 2px solid brown;
-
 }
 th {
     background-color: rgb(240, 245, 245);
     font-size: small;
+    position: sticky;
+    top: 52px;
 }
 td, th {
     padding: 20px 10px;
@@ -80,6 +81,12 @@ td {
     cursor: pointer;
     color: whitesmoke;
     font-weight: bold;
+}
+.disabledBtn{
+    border-radius: 2em; 
+    border:none; 
+    padding:2px 20px; 
+    cursor: not-allowed;
 }
 .btn:hover {
     background-color: whitesmoke;

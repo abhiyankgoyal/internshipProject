@@ -1,13 +1,13 @@
 function getStudentDetails() {
-    var regNo;
+    var regno;
     var students = JSON.parse(window.localStorage.getItem("students"));
     console.log(students);
     if (window.localStorage.getItem("regno") != null) {
-        regNo = JSON.parse(window.localStorage.getItem("regno"));
-        console.log(regNo);
+        regno = JSON.parse(window.localStorage.getItem("regno"));
+        console.log(regno);
     }
     for (let i = 0; i < students.length; i++) {
-        if (regNo == students[i].registrationNo) {
+        if (regno == students[i].registrationNo) {
             console.log(students[i]);
             document.getElementById("registrationNo").value = students[i].registrationNo;
             document.getElementById("studentNewOld").value = students[i].category;
@@ -27,14 +27,11 @@ function getStudentDetails() {
             document.getElementById('district').value = students[i].district;
             document.getElementById('state').value = students[i].state;
             document.getElementById('pincode').value = students[i].pincode;
-            document.getElementById('photo').value = students[i].photo;
             document.getElementById('registrationFees').value = students[i].registrationFees;
             document.getElementById('fatherName').value = students[i].fatherName;
             document.getElementById('fatherContact').value = students[i].fatherContactNo;
-            document.getElementById('fatherPhoto').value = students[i].fatherPhoto;
             document.getElementById('motherName').value = students[i].motherName;
             document.getElementById('motherContact').value = students[i].motherContactNo;
-            document.getElementById('motherPhoto').value = students[i].motherPhoto;
             document.getElementById('parentAddress').value = students[i].parentAddress;
             document.getElementById('parentLandmark').value = students[i].parentLandmark;
             document.getElementById('parentPlace').value = students[i].parentPlace;
@@ -43,18 +40,17 @@ function getStudentDetails() {
             document.getElementById('parentPincode').value = students[i].parentPincode;
         }
     }
-
 }
 window.onload = getUser;
 
-function logout(){
+function logout() {
     window.sessionStorage.removeItem("user");
     document.location = 'Login.html';
 }
 
-function getUser(){
+function getUser() {
     user = JSON.parse(window.sessionStorage.getItem("user"));
-    document.getElementById("user").innerHTML= "Welcome " + user.name;
+    document.getElementById("user").innerHTML = "Welcome " + user.name;
     getStudentDetails();
 }
 
@@ -85,14 +81,14 @@ function updateStudent() {
             students[i].district = document.getElementById('district').value
             students[i].state = document.getElementById('state').value
             students[i].pincode = document.getElementById('pincode').value
-            students[i].photo = document.getElementById('photo').value
+
             students[i].registrationFees = document.getElementById('registrationFees').value
             students[i].fatherName = document.getElementById('fatherName').value
             students[i].fatherContactNo = document.getElementById('fatherContact').value
-            students[i].fatherPhoto = document.getElementById('fatherPhoto').value
+
             students[i].motherName = document.getElementById('motherName').value
             students[i].motherContactNo = document.getElementById('motherContact').value
-            students[i].motherPhoto = document.getElementById('motherPhoto').value
+
             students[i].parentAddress = document.getElementById('parentAddress').value
             students[i].parentLandmark = document.getElementById('parentLandmark').value
             students[i].parentPlace = document.getElementById('parentPlace').value
@@ -100,7 +96,7 @@ function updateStudent() {
             students[i].parentState = document.getElementById('parentState').value
             students[i].parentPincode = document.getElementById('parentPincode').value
             console.log(students[i]);
-            window.localStorage.setItem("students",JSON.stringify(students));
+            window.localStorage.setItem("students", JSON.stringify(students));
             alert('Updated successfully');
             document.location = 'registrationList.html';
         }

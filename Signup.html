@@ -6,12 +6,12 @@
     </title>
     <meta name="viewport" width="device-width" initial-scale="1.0">
     <link rel="stylesheet" href="Signupstyle.css" type="text/css">
-    
+
 </head>
 
 <body>
     <div class="SignupForm">
-        <form  name="Signup" onsubmit="validate(); return false;">
+        <form name="Signup" onsubmit="validate(); return false;">
             <h1>Sign-up</h1>
             <div class="textbox">
                 <input type="text" id="name" name="Name" placeholder="Name" value="" required />
@@ -19,25 +19,26 @@
             <div class="textbox">
                 <input type="text" id="username" name="username" placeholder="Username" value="" required />
             </div>
-            <p id = "userErr" style="color:red"></p>
+            <p id="userErr" style="color:red"></p>
             <div class="textbox">
                 <input type="email" id="email" name="email" placeholder="E-mail" value="" required />
             </div>
             <p id="duplicate" style="color:red"></p>
             <div class="textbox">
-                <input type="password" id="password" name="password" placeholder="password" minlength="8" value="" required />
+                <input type="password" id="password" name="password" placeholder="password" minlength="8" value=""
+                    required />
             </div>
-            <p id="message"></p>  
+            <p id="message"></p>
             <div class="textbox">
                 <input type="password" id="retype-password" name="retype-password" placeholder="Retype-password"
                     value="" required />
             </div>
             <div>
-                <input type="submit" id="submit" name="submit"  value="sign-up">
+                <input type="submit" id="submit" name="submit" value="sign-up">
             </div>
         </form>
     </div>
-    
+
     <script src="Signup.js"></script>
 </body>
 

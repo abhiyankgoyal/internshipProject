@@ -91,12 +91,13 @@ fieldset{
 }
 .submit #submit{
 	color:white;
-	margin-top:5px;
-	padding:8px;
+	margin-top:10px;
+	padding:10px;
 	text-align:center;
 	background-color:#3c8dbc;
 	border-radius:5px;
 	cursor : pointer;
+	border: none;
 }
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -118,7 +119,7 @@ input::-webkit-inner-spin-button {
     margin-top: 30px;
     background-color:#3c3c3c;
     padding : 5px;
-    color: #ffffff;
+    color: red;
 	text-align:center;
 	font-size: small;
 }
