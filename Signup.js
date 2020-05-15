@@ -35,28 +35,59 @@ function validate() {
     else {
         document.getElementById("message").innerHTML = "";
         var user = new User(name, userName, email, pass);
-        let count = 0;
-        for (let i = 0; i < users.length; i++) {
+        // let count = 0;
+        // for (let i = 0; i < users.length; i++) {
 
-            if (user.email == users[i].email) {
-                document.getElementById("duplicate").innerHTML = "account with this email already exists";
-                count++;
-            }
-            if (user.username == users[i].username) {
+        //     if (user.email == users[i].email) {
+        //         document.getElementById("duplicate").innerHTML = "account with this email already exists";
+        //         count++;
+        //     }
+        //     if (user.username == users[i].username) {
+        //         document.getElementById("userErr").innerHTML = "this username is not available";
+        //         count++;
+        //     }
+        // }
+        // if (count == 0) {
+        //     users.push((user));
+        // }
+        // else {
+        //     return false;
+        // }
+        //console.log(users);
+        console.log(user);
+        //window.localStorage.setItem("users", JSON.stringify(users));
+        
+        // php call
+        var xmlhttp;
+        var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var res = this.responseText;
+            console.log(res);
+            if(res == 0){
                 document.getElementById("userErr").innerHTML = "this username is not available";
-                count++;
             }
-        }
-        if (count == 0) {
-            users.push((user));
-        }
-        else {
-            return false;
-        }
-        console.log(users);
-        window.localStorage.setItem("users", JSON.stringify(users));
-        alert('account created successfully');
-        document.location = 'Login.html';
+            else if(res == 1){
+                document.getElementById("duplicate").innerHTML = "account with this email already exists";
+            }
+            else if(res == 2){
+                document.getElementById("userErr").innerHTML = "this username is not available";
+                document.getElementById("duplicate").innerHTML = "account with this email already exists";
+            }
+            else if(res == 3){
+                alert('account created successfully');
+                document.location = 'Login.html';
+            }
+            
+          }
+        };
+        xmlhttp.open("GET", "Signup.php?user="+ JSON.stringify(user), true);
+        xmlhttp.send();
+
+        // done
+        //alert('account created successfully');
+       // document.location = 'Login.html';
     }
 
 }

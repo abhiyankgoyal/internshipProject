@@ -40,27 +40,47 @@ class Student {
 var students = [];
 
 function getRegistrationNumber() {
-    studentsJSON = window.localStorage.getItem("students");
-    students = JSON.parse(studentsJSON);
-    if (students == null || students.length == 0) {
-        students = [];
-        document.getElementById("registrationNo").value = 1;
-    }
-    else {
-        console.log(students.length);
-        document.getElementById("registrationNo").value = Number(students[students.length - 1].registrationNo) + 1;
-    }
+    // studentsJSON = window.localStorage.getItem("students");
+    // students = JSON.parse(studentsJSON);
+    // if (students == null || students.length == 0) {
+    //     students = [];
+    //     document.getElementById("registrationNo").value = 1;
+    // }
+    // else {
+    //     console.log(students.length);
+    //     document.getElementById("registrationNo").value = Number(students[students.length - 1].registrationNo) + 1;
+    // }
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var res = this.responseText;
+            document.getElementById("user").innerHTML= "Welcome " + res;
+        }
+    } 
+    xmlhttp.open("GET", "sessionLogin.php", true);
+    xmlhttp.send();
+
 }
 window.onload = getUser();
 
 function getUser(){
-    user = JSON.parse(window.sessionStorage.getItem("user"));
-    document.getElementById("user").innerHTML= "Welcome " + user.name;
+    // user = JSON.parse(window.sessionStorage.getItem("user"));
+    // document.getElementById("user").innerHTML= "Welcome " + user.name;
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var res = this.responseText;
+            document.getElementById("user").innerHTML= "Welcome " + res;
+        }
+    } 
+    xmlhttp.open("GET", "sessionLogin.php", true);
+    xmlhttp.send();
     getRegistrationNumber();
 }
 
 function logout(){
     window.sessionStorage.removeItem("user");
+    
     document.location = 'Login.html';
 }
 
@@ -98,15 +118,30 @@ function createStudent() {
 
     var student = new Student(data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11, data12, data13, data14, data15, data16, data17, data18, data20, data21, data22, data24, data25, data27, data28, data29, data30, data31, data32);
 
-    students.push(student);
-    window.localStorage.setItem("students", JSON.stringify(students));
-    if (window.localStorage.getItem("students") != null && window.localStorage.getItem("students").length > 0) {
-        studentsJson = window.localStorage.getItem("students");
-        students = JSON.parse(studentsJson);
-    }
-    console.log(students);
-    getRegistrationNumber(students);
-    document.location = 'registrationList.html';
-    alert('successfully completed');
+    // students.push(student);
+    // window.localStorage.setItem("students", JSON.stringify(students));
+    // if (window.localStorage.getItem("students") != null && window.localStorage.getItem("students").length > 0) {
+    //     studentsJson = window.localStorage.getItem("students");
+    //     students = JSON.parse(studentsJson);
+    // }
+    // console.log(students);
 
+    //AJAX
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var res = this.responseText;
+            if(res == 1){
+                alert('successfully completed');
+                document.location = 'registrationList.html';
+            }
+            else{
+                console.log(res);
+            }
+        }
+    };
+    xmlhttp.open("GET", "registrationForm.php?student=" + JSON.stringify(student), true);
+    xmlhttp.send();
+    //done
+
+    //getRegistrationNumber(students);
 }
