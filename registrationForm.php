@@ -49,5 +49,5 @@
             echo $conn->error;
         }
     }
-    
+    $conn->close();
 ?>

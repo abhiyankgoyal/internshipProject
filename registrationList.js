@@ -4,7 +4,7 @@ window.onload = getUser;
 function getUser() {
     //user = JSON.parse(window.sessionStorage.getItem("user"));
     //document.getElementById("user").innerHTML = "Welcome " + user.name;
-    xmlhttp = new XMLHttpRequest();
+    var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var res = this.responseText;
@@ -17,14 +17,23 @@ function getUser() {
 }
 function registrationNo(regno) {
     console.log(regno);
-    window.localStorage.setItem("regno", JSON.stringify(regno));
-    document.location = 'registrationFormUpdate.html';
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var res = this.responseText;
+            
+        }
+    }
+    xmlhttp.open("GET", "registrationPage.php?regno=" + JSON.stringify(regno), true);
+    xmlhttp.send();
+    //window.localStorage.setItem("regno", JSON.stringify(regno));
+    //document.location = 'registrationFormUpdate.html';
 }
 
 function logout() {
     //window.sessionStorage.removeItem("user");
     //document.location = 'Login.html';
-    xmlhttp = new XMLHttpRequest();
+    var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var res = this.responseText;
@@ -76,13 +85,19 @@ function addData() {
     var xmlhttp2 = new XMLHttpRequest();
     xmlhttp2.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            rStudents = this.responseText;
-            registeredStudents = JSON.parse(rStudents);
-            console.log("registeredStudents", registeredStudents);
+            aStudents = this.responseText;
+            if (aStudents == undefined || aStudents == "") {
+                aStudents = [];
+                admittedStudents = [];
+            }
+            else {
+                admittedStudents = JSON.parse(aStudents);
+                console.log("admittedStudents", admittedStudents);
+            }
         }
     }
-    xmlhttp2.open("GET", "registrationList.php", false);
-    xmlhttp2.send();    
+    xmlhttp2.open("GET", "registrationList2.php", false);
+    xmlhttp2.send();
     //var studentsJson = window.localStorage.getItem("students");
     //var students = JSON.parse(studentsJson);
     //var admissionStudents = JSON.parse(window.localStorage.getItem("admission"));
@@ -107,7 +122,7 @@ function addData() {
         cell5.innerHTML = registeredStudents[i].fatherContactNo;
         cell6.innerHTML = registeredStudents[i].admissionDate;
         cell7.innerHTML = "<button class= 'btn' onclick=registrationNo(" + registeredStudents[i].registrationNo + ")>Modify</button>";
-        if (admittedStudents.length == null || admittedStudents.length == 0) {
+        if (admittedStudents.length == 0) {
             cell8.innerHTML = "<button class='btn' onclick=makeAdmission(" + registeredStudents[i].registrationNo + ")>Make Admission</button>";
         }
         else {
@@ -137,6 +152,5 @@ function addData() {
     else {
         document.getElementById("footer").style.color = "red";
     }
-    getUser();
 }
 
