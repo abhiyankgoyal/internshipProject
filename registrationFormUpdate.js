@@ -44,13 +44,33 @@ function getStudentDetails() {
 window.onload = getUser;
 
 function logout() {
-    window.sessionStorage.removeItem("user");
-    document.location = 'Login.html';
+    //window.sessionStorage.removeItem("user");
+    //document.location = 'Login.html';
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var res = this.responseText;
+            if (res == 0 || res == 1) {
+                document.location = 'Login.html';
+            }
+        }
+    }
+    xmlhttp.open("GET", "sessionLogout.php", true);
+    xmlhttp.send();
 }
 
 function getUser() {
-    user = JSON.parse(window.sessionStorage.getItem("user"));
-    document.getElementById("user").innerHTML = "Welcome " + user.name;
+    //user = JSON.parse(window.sessionStorage.getItem("user"));
+    //document.getElementById("user").innerHTML = "Welcome " + user.name;
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var res = this.responseText;
+            document.getElementById("user").innerHTML = "Welcome " + res;
+        }
+    }
+    xmlhttp.open("GET", "sessionLogin.php", true);
+    xmlhttp.send();
     getStudentDetails();
 }
 

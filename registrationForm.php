@@ -11,7 +11,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
     else{
-        $insertStudent = "INSERT INTO resisteredstudents VALUES ('$student->registrationNo',
+        $insertStudent = "INSERT INTO registeredstudents VALUES ('$student->registrationNo',
         '$student->category',
         '$student->division',
         '$student->name',

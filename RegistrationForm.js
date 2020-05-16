@@ -2,7 +2,7 @@ class Student {
 
     constructor(registrationNo, category, division, name, dob, gender, admissionDate, admissionType, feeCategory,
         busService, hostel, contactNo, address, landmark, place, district, state, pincode, registrationFees,
-        fatherName, fatherContactNo, motherName, motherContactNo, parentAddress, parentLandmark, parentPlace, 
+        fatherName, fatherContactNo, motherName, motherContactNo, parentAddress, parentLandmark, parentPlace,
         parentDistrict, parentState, parentPincode) {
 
         this.registrationNo = registrationNo;
@@ -39,49 +39,61 @@ class Student {
 
 var students = [];
 
-function getRegistrationNumber() {
-    // studentsJSON = window.localStorage.getItem("students");
-    // students = JSON.parse(studentsJSON);
-    // if (students == null || students.length == 0) {
-    //     students = [];
-    //     document.getElementById("registrationNo").value = 1;
-    // }
-    // else {
-    //     console.log(students.length);
-    //     document.getElementById("registrationNo").value = Number(students[students.length - 1].registrationNo) + 1;
-    // }
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-            var res = this.responseText;
-            document.getElementById("user").innerHTML= "Welcome " + res;
-        }
-    } 
-    xmlhttp.open("GET", "sessionLogin.php", true);
-    xmlhttp.send();
-
+//function getRegistrationNumber() {
+// studentsJSON = window.localStorage.getItem("students");
+// students = JSON.parse(studentsJSON);
+// if (students == null || students.length == 0) {
+//     students = [];
+//     document.getElementById("registrationNo").value = 1;
+// }
+// else {
+//     console.log(students.length);
+//     document.getElementById("registrationNo").value = Number(students[students.length - 1].registrationNo) + 1;
+// }
+//function createUUID() {
+    // var id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    //     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    //     return v.toString(16);
+    // });
+    // console.log(id);
+function generateRegistrationNo(){
+    var num = Date.now();
+    console.log(num);
+    document.getElementById("registrationNo").value = num;
 }
+
+
 window.onload = getUser();
 
-function getUser(){
+function getUser() {
     // user = JSON.parse(window.sessionStorage.getItem("user"));
     // document.getElementById("user").innerHTML= "Welcome " + user.name;
     xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
             var res = this.responseText;
-            document.getElementById("user").innerHTML= "Welcome " + res;
+            document.getElementById("user").innerHTML = "Welcome " + res;
         }
-    } 
+    }
     xmlhttp.open("GET", "sessionLogin.php", true);
     xmlhttp.send();
-    getRegistrationNumber();
+    //createUUID();
+    generateRegistrationNo();
 }
 
-function logout(){
-    window.sessionStorage.removeItem("user");
-    
-    document.location = 'Login.html';
+function logout() {
+    //window.sessionStorage.removeItem("user");
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var res = this.responseText;
+            if (res == 0 || res == 1) {
+                document.location = 'Login.html';
+            }
+        }
+    }
+    xmlhttp.open("GET", "sessionLogout.php", true);
+    xmlhttp.send();
 }
 
 function createStudent() {
@@ -130,11 +142,11 @@ function createStudent() {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var res = this.responseText;
-            if(res == 1){
+            if (res == 1) {
                 alert('successfully completed');
                 document.location = 'registrationList.html';
             }
-            else{
+            else {
                 console.log(res);
             }
         }
@@ -142,6 +154,4 @@ function createStudent() {
     xmlhttp.open("GET", "registrationForm.php?student=" + JSON.stringify(student), true);
     xmlhttp.send();
     //done
-
-    //getRegistrationNumber(students);
 }
