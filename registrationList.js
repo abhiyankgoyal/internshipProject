@@ -21,10 +21,11 @@ function registrationNo(regno) {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var res = this.responseText;
-            
+            console.log(res);
+            document.location = 'registrationFormUpdate.html';
         }
     }
-    xmlhttp.open("GET", "registrationPage.php?regno=" + JSON.stringify(regno), true);
+    xmlhttp.open("GET", "getRegistrationNo.php?regno=" + JSON.stringify(regno), false);
     xmlhttp.send();
     //window.localStorage.setItem("regno", JSON.stringify(regno));
     //document.location = 'registrationFormUpdate.html';
@@ -45,25 +46,55 @@ function logout() {
     xmlhttp.open("GET", "sessionLogout.php", true);
     xmlhttp.send();
 }
-
-function deleteStudent(index) {
-    var studentsJson = window.localStorage.getItem("students");
-    var students = JSON.parse(studentsJson);
-    if (confirm('Do You Want to delete record of student ' + students[index].name + '?')) {
-        students.splice(index, 1);
-        console.log(students);
-        window.localStorage.setItem("students", JSON.stringify(students));
-        document.location = 'registrationlist.html';
-    }
-    else {
-        return;
+function deleteStudent(regno, name) {
+    //function deleteStudent(index) {
+    // var studentsJson = window.localStorage.getItem("students");
+    // var students = JSON.parse(studentsJson);
+    // if (confirm('Do You Want to delete record of student ' + students[index].name + '?')) {
+    //     students.splice(index, 1);
+    //     console.log(students);
+    //     window.localStorage.setItem("students", JSON.stringify(students));
+    //     document.location = 'registrationlist.html';
+    // }
+    // else {
+    //     return;
+    // }
+    //}
+    console.log(`${regno} ${name}`);
+    if (confirm('Do You Want to delete record of student ' + name + '?')) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var res = this.responseText;
+                if (res == 1) {
+                    document.location = 'registrationList.html';
+                }
+                else{
+                    alert(res);
+                }
+            }
+        }
+        xmlhttp.open("GET", "deleteRegisteredStudent.php?regno=" + JSON.stringify(regno), true);
+        xmlhttp.send();
     }
 }
 
 function makeAdmission(regno) {
-    console.log(regno);
-    window.localStorage.setItem("regno", JSON.stringify(regno));
-    document.location = 'admissionPage.html';
+    console.log(`${regno}`);
+    //window.localStorage.setItem("regno", JSON.stringify(regno));
+    //document.location = 'admissionPage.html';
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var res = this.responseText;
+            console.log(res);
+            document.location = 'admissionPage.html';
+        }
+    }
+    xmlhttp.open("GET", "getRegistrationNo.php?regno=" + JSON.stringify(regno), false);
+    xmlhttp.send();
+    //window.localStorage.setItem("regno", JSON.stringify(regno));
+    //document.location = 'admissionPage.html';
 }
 
 function addData() {
@@ -140,7 +171,8 @@ function addData() {
 
         }
         cell9.innerHTML = "<button class='btn'>print</button>";
-        cell10.innerHTML = "<button class='btn' onclick=deleteStudent(" + i + ")>Delete</button>";
+      //  cell10.innerHTML = "<button class='btn' onclick=deleteStudent(" + registeredStudents[i].registrationNo + "," + registeredStudents[i].name + ")>Delete</button>";
+      cell10.innerHTML = `<button class='btn' onclick=deleteStudent(${registeredStudents[i].registrationNo},'${registeredStudents[i].name}')>Delete</button>`;
     }
 
     if (registeredStudents.length < 6) {
@@ -153,4 +185,3 @@ function addData() {
         document.getElementById("footer").style.color = "red";
     }
 }
-

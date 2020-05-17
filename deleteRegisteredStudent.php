@@ -11,11 +11,13 @@
         die("Connection failed: " . $conn->connect_error);
     }
     else{
-        $sql = "SELECT * FROM registeredStudents where registrationNo = $regno";
-        $result = $conn->query($sql);
-        $row = $result->fetch_assoc();
-        $student = array($row);
-        echo json_encode($student);
+        $sql = "DELETE FROM registeredStudents WHERE registrationNo = $regno";
+        if($conn->query($sql) === true){
+            echo "1";
+        }
+        else{
+            echo $conn->error;
+        }
     }
     $conn->close();
 ?>

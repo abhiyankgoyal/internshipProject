@@ -1,4 +1,5 @@
 <?php
+    $regno = json_decode($_REQUEST["regno"]);
     $servername = 'localhost';
     $username = 'root';
     $password = '';
@@ -10,14 +11,12 @@
         die("Connection failed: " . $conn->connect_error);
     }
     else{
-        $sql = "SELECT * FROM registeredStudents";
-        $result = $conn->query($sql);
-        $registeredStudents = array();
-        if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
-                array_push($registeredStudents, $row);
-            }
-            echo json_encode($registeredStudents);
+        $sql = "DELETE FROM admittedStudents WHERE registrationNo = $regno";
+        if($conn->query($sql) === true){
+            echo "1";
+        }
+        else{
+            echo $conn->error;
         }
     }
     $conn->close();

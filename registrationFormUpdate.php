@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    $regno = $_SESSION["regno"];
     $servername = 'localhost';
     $username = 'root';
     $password = '';
@@ -10,15 +12,11 @@
         die("Connection failed: " . $conn->connect_error);
     }
     else{
-        $sql = "SELECT * FROM registeredStudents";
+        $sql = "SELECT * FROM registeredStudents where registrationNo = $regno";
         $result = $conn->query($sql);
-        $registeredStudents = array();
-        if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
-                array_push($registeredStudents, $row);
-            }
-            echo json_encode($registeredStudents);
-        }
+        $row = $result->fetch_assoc();
+        $student = array($row);
+        echo json_encode($student);
     }
     $conn->close();
 ?>
