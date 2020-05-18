@@ -111,8 +111,15 @@ function addData() {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             rStudents = this.responseText;
-            registeredStudents = JSON.parse(rStudents);
-            console.log("registeredStudents", registeredStudents);
+            //registeredStudents = JSON.parse(rStudents);
+            if (rStudents == undefined || rStudents == "") {
+                rStudents = [];
+                registeredStudents = [];
+            }
+            else {
+                registeredStudents = JSON.parse(rStudents);
+                console.log("registeredStudents", registeredStudents);
+            }
         }
     }
     xmlhttp.open("GET", "registrationList.php", false);
