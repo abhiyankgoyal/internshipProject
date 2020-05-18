@@ -17,6 +17,9 @@ function getUser() {
 }
 function registrationNo(regno) {
     console.log(regno);
+    var count = JSON.parse(window.localStorage.getItem("count"));
+    count = 0;
+    window.localStorage.setItem("count", JSON.stringify(count));
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -80,6 +83,8 @@ function deleteStudent(regno, name) {
 }
 
 function makeAdmission(regno) {
+    var count = 0;
+    window.localStorage.setItem("count", JSON.stringify(count));
     console.log(`${regno}`);
     //window.localStorage.setItem("regno", JSON.stringify(regno));
     //document.location = 'admissionPage.html';

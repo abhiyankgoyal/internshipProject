@@ -16,6 +16,9 @@ function getUser() {
     addData();
 }
 function registrationNo(regno) {
+    var count = JSON.parse(window.localStorage.getItem("count"));
+    count = 1;
+    window.localStorage.setItem("count", JSON.stringify(count));
     console.log(regno);
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {

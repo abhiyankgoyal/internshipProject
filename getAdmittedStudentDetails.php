@@ -12,12 +12,11 @@
         die("Connection failed: " . $conn->connect_error);
     }
     else{
-        $sql = "SELECT * FROM registeredStudents where registrationNo = $regno";
+        $sql = "SELECT * FROM admittedStudents where registrationNo = $regno";
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
         $student = array($row);
         echo json_encode($student);
-        
+
     }
-    $conn->close();
 ?>

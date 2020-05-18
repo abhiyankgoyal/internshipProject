@@ -1,3 +1,13 @@
+function getCount(){
+    var count = JSON.parse(window.localStorage.getItem("count"));
+    if(count == 0){
+        getStudentDetails();
+    }
+    else{
+        getAdmittedStudentDetails();
+    }
+}
+
 function getStudentDetails() {
     //var regno;
     //var students = JSON.parse(window.localStorage.getItem("students"));
@@ -84,7 +94,7 @@ function getUser() {
     }
     xmlhttp.open("GET", "sessionLogin.php", true);
     xmlhttp.send();
-    getStudentDetails();
+    getCount();
 }
 
 function updateStudent() {
@@ -149,7 +159,7 @@ function updateStudent() {
                 document.location = 'registrationList.html';
             }
             else{
-                alert("error in updating deatils");
+                alert(res);
                 return;
             }
         }

@@ -13,8 +13,8 @@
         die("Connection failed: " . $conn->connect_error);
     }
     else{
-        $sql = "UPDATE registeredStudents
-                SET  registrationNo = '$student->registrationNo',
+        $sql = "UPDATE admittedStudents
+                SET registrationNo = '$student->registrationNo',
 category = '$student->category',
 division = '$student->division',
 name = '$student->name',
@@ -42,15 +42,27 @@ parentLandmark = '$student->parentLandmark',
 parentPlace = '$student->parentPlace',
 parentDistrict = '$student->parentDistrict',
 parentState = '$student->parentState',
-parentPincode = '$student->parentPincode'
+parentPincode = '$student->parentPincode',
+studentPhoto = '$student->studentPhoto',
+studentAadhaarPhoto = '$student->studentAadhaarPhoto',
+studentDobPhoto = '$student->studentDobPhoto',
+studentOtherDocumentPhoto = '$student->studentOtherDocumentPhoto',
+fatherPhoto = '$student->fatherPhoto',
+fatherAadhaarPhoto = '$student->fatherAadhaarPhoto',
+fatherOtherDocumentPhoto = '$student->fatherOtherDocumentPhoto',
+motherPhoto = '$student->motherPhoto',
+motherAadhaarPhoto = '$student->motherAadhaarPhoto',
+motherOtherDocumentPhoto = '$student->motherOtherDocumentPhoto',
+guardianPhoto = '$student->guardianPhoto',
+guardianAadhaarPhoto = '$student->guardianAadhaarPhoto',
+guardianOtherDocumentPhoto = '$student->guardianOtherDocumentPhoto'
 WHERE registrationNo = $regno";
-
 if($conn->query($sql) === true){
     echo "1";
 }
 else{
     echo $conn->error;
 }
-}
+    }
     $conn->close();
 ?>
