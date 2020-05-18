@@ -12,7 +12,8 @@
     }
     else{
         $sql = "DELETE FROM registeredStudents WHERE registrationNo = $regno";
-        if($conn->query($sql) === true){
+        $sql2 = "DELETE FROM admittedStudents WHERE registrationNo = $regno";
+        if($conn->query($sql) === true && $conn->query($sql2) === true){
             echo "1";
         }
         else{
