@@ -14,10 +14,8 @@
     else{
         $sql = "SELECT * FROM registeredStudents where registrationNo = $regno";
         $result = $conn->query($sql);
-        $row = $result->fetch_assoc();
-        $student = array($row);
-        echo json_encode($student);
-        
+        $row = $result->fetch_assoc(); // fetching student with registrationNo = $regno
+        echo json_encode($row); //sending object as a string
     }
     $conn->close();
 ?>
