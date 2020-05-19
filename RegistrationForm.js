@@ -151,7 +151,11 @@ function createStudent() {
             }
         }
     };
-    xmlhttp.open("GET", "registrationForm.php?student=" + JSON.stringify(student), true);
-    xmlhttp.send();
+    //xmlhttp.open("GET", "registrationForm.php?student=" + JSON.stringify(student), true);
+    //xmlhttp.send();
+    xmlhttp.open("POST", "registrationForm.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //xmlhttp.send("student="+JSON.stringify(student));
+    xmlhttp.send(`student=${JSON.stringify(student)}`);
     //done
 }

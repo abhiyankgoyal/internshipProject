@@ -1,5 +1,5 @@
 <?php
-    $user = json_decode($_REQUEST["user"]);
+    $user = json_decode($_POST["user"]);
     $servername = 'localhost';
     $username = 'root';
     $password = '';
@@ -13,18 +13,16 @@
     else{
         $sql = "SELECT * FROM users";
         $result = $conn->query($sql);
-        //echo $user->name;
         if($result->num_rows == 0){
             $insertUser = "INSERT INTO users (name, username, email, password) VALUES ('$user->name', '$user->username', '$user->email', '$user->pass')";
             if($conn->query($insertUser) === true){
                 echo "3"; // 3 = data inserted successfully
             }
             else{
-                echo "data cannot be entered". $conn->error;
+                echo "data cannot be entered because ". $conn->error;
             }
         }
         else{
-            //$insertUser = "INSERT INTO users (name, username, email, password) VALUES ('$user->name', '$user->username', '$user->email', '$user->pass')";
             $foundUsername = 0;
             $foundEmail = 0;
             while($row = $result->fetch_assoc()){
@@ -44,7 +42,7 @@
                     echo "3"; // 3 = data inserted successfully
                 }
                 else{
-                    echo "data cannot be entered". $conn->error;
+                    echo "data cannot be entered because ". $conn->error;
                 }
             }
             elseif($foundUsername == 1 && $foundEmail == 0){
@@ -58,13 +56,6 @@
             }
 
         }
-    //     $str = "";
-    //     for ($x = 0; $x <= count($users); $x++) {
-    //         $str = $users[$x]->name;
-    //         break;
-    //       }
-    //    echo $str;
-    }
+     }
     $conn->close();
-
 ?>

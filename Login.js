@@ -42,6 +42,7 @@ function verify() {
             }
         }
     };
-    xmlhttp.open("GET", "login.php?loginUserName=" + JSON.stringify(loginUserName) + "&loginPassword=" + JSON.stringify(loginPass), true);
-    xmlhttp.send();
+    xmlhttp.open("POST", "login.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("loginUserName="+JSON.stringify(loginUserName)+"&loginPassword="+JSON.stringify(loginPass));
 }

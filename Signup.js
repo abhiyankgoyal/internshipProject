@@ -11,14 +11,14 @@ class User {
 
 function validate() {
 
-    var users = [];
+    //var users = [];
     document.getElementById("duplicate").innerHTML = "";
     document.getElementById("userErr").innerHTML = "";
 
-    if (window.localStorage.getItem("users") != null && window.localStorage.getItem("users").length > 0) {
-        usersJson = window.localStorage.getItem("users");
-        users = JSON.parse(usersJson);
-    }
+    // if (window.localStorage.getItem("users") != null && window.localStorage.getItem("users").length > 0) {
+    //     usersJson = window.localStorage.getItem("users");
+    //     users = JSON.parse(usersJson);
+    // }
 
     var name = document.getElementById("name").value;
     var userName = document.getElementById("username").value;
@@ -56,7 +56,8 @@ function validate() {
         //console.log(users);
         console.log(user);
         //window.localStorage.setItem("users", JSON.stringify(users));
-        
+        var userStr = JSON.stringify(user);
+        console.log(userStr);
         // php call
         var xmlhttp;
         var xmlhttp = new XMLHttpRequest();
@@ -79,11 +80,19 @@ function validate() {
                 alert('account created successfully');
                 document.location = 'Login.html';
             }
+            else{
+                alert(res);
+                return;
+            }
             
           }
         };
-        xmlhttp.open("GET", "Signup.php?user="+ JSON.stringify(user), true);
-        xmlhttp.send();
+        //xmlhttp.open("GET", "Signup.php?user="+ JSON.stringify(user), true);
+        //xmlhttp.send();
+        xmlhttp.open("POST", "Signup.php", true);
+        // xmlhttp.setRequestHeader("Content-type", "application/json");
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send(`user=${userStr}`);
 
         // done
         //alert('account created successfully');

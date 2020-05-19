@@ -77,8 +77,11 @@ function deleteStudent(regno, name) {
                 }
             }
         }
-        xmlhttp.open("GET", "deleteRegisteredStudent.php?regno=" + JSON.stringify(regno), true);
-        xmlhttp.send();
+        //xmlhttp.open("GET", "deleteRegisteredStudent.php?regno=" + JSON.stringify(regno), true);
+        //xmlhttp.send();
+        xmlhttp.open("POST", "deleteRegisteredStudent.php", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send(`regno=${JSON.stringify(regno)}`);
     }
 }
 

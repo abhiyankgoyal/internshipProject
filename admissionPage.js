@@ -235,8 +235,11 @@ function uploadDocuments() {
                 }
             }
         }
-        xmlhttp2.open("GET", "admittingStudent.php?student=" + JSON.stringify(student), false);
-        xmlhttp2.send();
+        //xmlhttp2.open("GET", "admittingStudent.php?student=" + JSON.stringify(student), false);
+        //xmlhttp2.send();
+        xmlhttp2.open("POST", "admittingStudent.php", false);
+        xmlhttp2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp2.send(`student=${JSON.stringify(student)}`);
     }
     else {
         // var studentDetails;
@@ -310,8 +313,10 @@ function uploadDocuments() {
                 }
             }
         }
-        xmlhttp2.open("GET", "updateAdmittedStudentDetails.php?student=" + JSON.stringify(student), false);
-        xmlhttp2.send();
-
+        // xmlhttp2.open("GET", "updateAdmittedStudentDetails.php?student=" + JSON.stringify(student), false);
+        // xmlhttp2.send();
+        xmlhttp2.open("POST", "updateAdmittedStudentDetails.php?student=" + JSON.stringify(student), false);
+        xmlhttp2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp2.send("student="+JSON.stringify(student));
     }
 }

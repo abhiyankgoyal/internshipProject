@@ -228,8 +228,11 @@ function updateStudent() {
             }
         }
     }
-    xmlhttp2.open("GET", "registeredStudentDetailsUpdate.php?student=" + JSON.stringify(student), false);
-    xmlhttp2.send();
+    //xmlhttp2.open("GET", "registeredStudentDetailsUpdate.php?student=" + JSON.stringify(student), false);
+    //xmlhttp2.send();
+    xmlhttp2.open("POST", "registeredStudentDetailsUpdate.php", false);
+    xmlhttp2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp2.send(`student=${JSON.stringify(student)}`);
     //alert('Updated successfully');
     //document.location = 'registrationList.html';
 }
