@@ -12,7 +12,7 @@
 
 <body>
     <div class="Login-form">
-        <form name="loginForm">
+        <form name="loginForm" onsubmit="verify(); return false;">
             <h1>Login</h1>
             <div class="textbox">
                 <i class="fa fa-user"></i>
@@ -24,8 +24,7 @@
                     required>
             </div>
             <p id="err" style="color:red"></p>
-            <input class="btn" type="submit" onclick="verify(); return false;" id="Login" name="Login"
-                value="Login"></a>
+            <input class="btn" type="submit"  id="Login" name="Login" value="Login">
             <a href="Signup.html"><input class="btn" type="button" id="SignUp" name="SignUp" value="Sign-up"></a>
         </form>
     </div>

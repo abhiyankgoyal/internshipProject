@@ -83,6 +83,9 @@ function uploadDocuments() {
     // }
     var count = JSON.parse(window.localStorage.getItem("count"));
 
+    // var student = new Object();
+    // student.registrationNo = document.getElementById('registrationNo').value;
+
     if (count == 0) {
         var studentDetails;
         var student;
