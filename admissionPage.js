@@ -46,7 +46,22 @@ function getAdmittedStudentDetails() {
     document.getElementById('parentDistrict').value = student.parentDistrict;
     document.getElementById('parentState').value = student.parentState;
     document.getElementById('parentPincode').value = student.parentPincode;
-    
+    document.getElementById('studentPhoto').fileName = student.studentPhoto;
+    document.getElementById('studentAadhaarPhoto').fileName = student.studentAadhaarPhoto;
+    document.getElementById('studentDobPhoto').fileName = student.studentDobPhoto;
+    document.getElementById('studentOtherDocumentPhoto').fileName = student.studentOtherDocumentPhoto;
+    document.getElementById('fatherPhoto').fileName = student.fatherPhoto;
+    document.getElementById('fatherAadhaarPhoto').fileName = student.fatherAadhaarPhoto;
+    document.getElementById('fatherOtherDocumentPhoto').fileName = student.fatherOtherDocumentPhoto;
+    document.getElementById('motherPhoto').fileName = student.motherPhoto;
+    document.getElementById('motherAadhaarPhoto').fileName = student.motherAadhaarPhoto;
+    document.getElementById('motherOtherDocumentPhoto').fileName = student.motherOtherDocumentPhoto;
+    document.getElementById('guardianPhoto').fileName = student.guardianPhoto;
+    document.getElementById('guardianAadhaarPhoto').fileName = student.guardianAadhaarPhoto;
+    document.getElementById('guardianOtherDocumentPhoto').fileName = student.guardianOtherDocumentPhoto;
+
+
+
     // document.getElementById("registrationNo").value = student[0].registrationNo;
     // document.getElementById("studentNewOld").value = student[0].category;
     // document.getElementById('class').value = student[0].division;
@@ -147,21 +162,189 @@ function uploadDocuments() {
     student.parentDistrict = document.getElementById('parentDistrict').value;
     student.parentState = document.getElementById('parentState').value;
     student.parentPincode = document.getElementById('parentPincode').value;
-    student.studentPhoto = document.getElementById('studentPhoto').value;
-    student.studentAadhaarPhoto = document.getElementById('studentAadhaarPhoto').value;
-    student.studentDobPhoto = document.getElementById('studentDobPhoto').value;
-    student.studentOtherDocumentPhoto = document.getElementById('studentOtherDocumentPhoto').value;
-    student.fatherPhoto = document.getElementById('fatherPhoto').value;
-    student.fatherAadhaarPhoto = document.getElementById('fatherAadhaarPhoto').value;
-    student.fatherOtherDocumentPhoto = document.getElementById('fatherOtherDocumentPhoto').value;
-    student.motherPhoto = document.getElementById('motherPhoto').value;
-    student.motherAadhaarPhoto = document.getElementById('motherAadhaarPhoto').value;
-    student.motherOtherDocumentPhoto = document.getElementById('motherOtherDocumentPhoto').value;
-    student.guardianPhoto = document.getElementById('guardianPhoto').value;
-    student.guardianAadhaarPhoto = document.getElementById('guardianAadhaarPhoto').value;
-    student.guardianOtherDocumentPhoto = document.getElementById('guardianOtherDocumentPhoto').value;
+    student.studentPhoto = document.getElementById('studentPhoto').fileName;
+    student.studentAadhaarPhoto = document.getElementById('studentAadhaarPhoto').fileName;
+    student.studentDobPhoto = document.getElementById('studentDobPhoto').fileName;
+    student.studentOtherDocumentPhoto = document.getElementById('studentOtherDocumentPhoto').fileName;
+    student.fatherPhoto = document.getElementById('fatherPhoto').fileName;
+    student.fatherAadhaarPhoto = document.getElementById('fatherAadhaarPhoto').fileName;
+    student.fatherOtherDocumentPhoto = document.getElementById('fatherOtherDocumentPhoto').fileName;
+    student.motherPhoto = document.getElementById('motherPhoto').fileName;
+    student.motherAadhaarPhoto = document.getElementById('motherAadhaarPhoto').fileName;
+    student.motherOtherDocumentPhoto = document.getElementById('motherOtherDocumentPhoto').fileName;
+    student.guardianPhoto = document.getElementById('guardianPhoto').fileName;
+    student.guardianAadhaarPhoto = document.getElementById('guardianAadhaarPhoto').fileName;
+    student.guardianOtherDocumentPhoto = document.getElementById('guardianOtherDocumentPhoto').fileName;
+
 
     console.log(student);
+    var studentPhotoFile = [];
+    if (document.getElementById('studentPhoto').files.length > 0) {
+        student.studentPhoto = document.getElementById('studentPhoto').files[0].name;
+        studentPhotoFile = document.getElementById('studentPhoto').files;
+    }
+
+    var studentAadhaarPhotoFile = [];
+    if (document.getElementById('studentAadhaarPhoto').files.length > 0) {
+        student.studentAadhaarPhoto = document.getElementById('studentAadhaarPhoto').files[0].name;
+        studentAadhaarPhotoFile = document.getElementById('studentAadhaarPhoto').files;
+    }
+
+    var studentDobPhotoFile = [];
+    if (document.getElementById('studentDobPhoto').files.length > 0) {
+        student.studentDobPhoto = document.getElementById('studentDobPhoto').files[0].name;
+        studentDobPhotoFile = document.getElementById('studentDobPhoto').files;
+    }
+
+    var studentOtherDocumentPhotoFile = [];
+    if (document.getElementById('studentOtherDocumentPhoto').files.length > 0) {
+        student.studentOtherDocumentPhoto = document.getElementById('studentOtherDocumentPhoto').files[0].name;
+        studentOtherDocumentPhotoFile = document.getElementById('studentOtherDocumentPhoto').files;
+    }
+
+    var fatherPhotoFile = [];
+    if (document.getElementById('fatherPhoto').files.length > 0) {
+        student.fatherPhoto = document.getElementById('fatherPhoto').files[0].name;
+        fatherPhotoFile = document.getElementById('fatherPhoto').files;
+    }
+
+    var fatherAadhaarPhotoFile = [];
+    if (document.getElementById('fatherAadhaarPhoto').files.length > 0) {
+        student.fatherAadhaarPhoto = document.getElementById('fatherAadhaarPhoto').files[0].name;
+        fatherAadhaarPhotoFile = document.getElementById('fatherAadhaarPhoto').files;
+    }
+
+    var fatherOtherDocumentPhotoFile = [];
+    if (document.getElementById('fatherOtherDocumentPhoto').files.length > 0) {
+        student.fatherOtherDocumentPhoto = document.getElementById('fatherOtherDocumentPhoto').files[0].name;
+        fatherOtherDocumentPhotoFile = document.getElementById('fatherOtherDocumentPhoto').files;
+    }
+
+    var motherPhotoFile = [];
+    if (document.getElementById('motherPhoto').files.length > 0) {
+        student.motherPhoto = document.getElementById('motherPhoto').files[0].name;
+        motherPhotoFile = document.getElementById('motherPhoto').files;
+    }
+
+    var motherAadhaarPhotoFile = [];
+    if (document.getElementById('motherAadhaarPhoto').files.length > 0) {
+        student.motherAadhaarPhoto = document.getElementById('motherAadhaarPhoto').files[0].name;
+        motherAadhaarPhotoFile = document.getElementById('motherAadhaarPhoto').files;
+    }
+
+    var motherOtherDocumentPhotoFile = [];
+    if (document.getElementById('motherOtherDocumentPhoto').files.length > 0) {
+        student.motherOtherDocumentPhoto = document.getElementById('motherOtherDocumentPhoto').files[0].name;
+        motherOtherDocumentPhotoFile = document.getElementById('motherOtherDocumentPhoto').files;
+    }
+
+    var guardianPhotoFile = [];
+    if (document.getElementById('guardianPhoto').files.length > 0) {
+        student.guardianPhoto = document.getElementById('guardianPhoto').files[0].name;
+        guardianPhotoFile = document.getElementById('guardianPhoto').files;
+    }
+
+    var guardianAadhaarPhotoFile = [];
+    if (document.getElementById('guardianAadhaarPhoto').files.length > 0) {
+        student.guardianAadhaarPhoto = document.getElementById('guardianAadhaarPhoto').files[0].name;
+        guardianAadhaarPhotoFile = document.getElementById('guardianAadhaarPhoto').files;
+    }
+
+    var guardianOtherDocumentPhotoFile = [];
+    if (document.getElementById('guardianOtherDocumentPhoto').files.length > 0) {
+        student.guardianOtherDocumentPhoto = document.getElementById('guardianOtherDocumentPhoto').files[0].name;
+        guardianOtherDocumentPhotoFile = document.getElementById('guardianOtherDocumentPhoto').files;
+    }
+
+    console.log(student);
+
+    var formData = new FormData();
+
+    if (studentPhotoFile.length > 0) {
+        formData.append("file1", studentPhotoFile[0]);
+    }
+    if (studentAadhaarPhotoFile.length > 0) {
+        formData.append("file2", studentAadhaarPhotoFile[0]);
+    }
+    if (studentDobPhotoFile.length > 0) {
+        formData.append("file3", studentDobPhotoFile[0]);
+    }
+    if (studentOtherDocumentPhotoFile.length > 0) {
+        formData.append("file4", studentOtherDocumentPhotoFile[0]);
+    }
+    if (fatherPhotoFile.length > 0) {
+        formData.append("file5", fatherPhotoFile[0]);
+    }
+    if (fatherAadhaarPhotoFile.length > 0) {
+        formData.append("file6", fatherAadhaarPhotoFile[0]);
+    }
+    if (fatherOtherDocumentPhotoFile.length > 0) {
+        formData.append("file7", fatherOtherDocumentPhotoFile[0]);
+    }
+    if (motherPhotoFile.length > 0) {
+        formData.append("file8", motherPhotoFile[0]);
+    }
+    if (motherAadhaarPhotoFile.length > 0) {
+        formData.append("file9", motherAadhaarPhotoFile[0]);
+    }
+    if (motherOtherDocumentPhotoFile.length > 0) {
+        formData.append("file10", motherOtherDocumentPhotoFile[0]);
+    }
+    if (guardianPhotoFile.length > 0) {
+        formData.append("file11", guardianPhotoFile[0]);
+    }
+    if (guardianAadhaarPhotoFile.length > 0) {
+        formData.append("file12", guardianAadhaarPhotoFile[0]);
+    }
+    if (guardianOtherDocumentPhotoFile.length > 0) {
+        formData.append("file13", guardianOtherDocumentPhotoFile[0]);
+    }
+
+    // if (studentPhotoFile.length > 0 || studentAadhaarPhotoFile.length > 0 || studentDobPhotoFile.length > 0 ||
+    //     studentOtherDocumentPhotoFile.length > 0 || fatherPhotoFile.length > 0 || fatherAadhaarPhotoFile.length > 0 ||
+    //     fatherOtherDocumentPhotoFile.length > 0 || motherPhotoFile.length > 0 || motherAadhaarPhotoFile.length > 0 ||
+    //     motherOtherDocumentPhotoFile.length > 0 || guardianPhotoFile.length > 0 || guardianAadhaarPhotoFile.length > 0 ||
+    //     guardianOtherDocumentPhotoFile.length > 0) {
+
+    //     // var formData = new FormData();
+    //     formData.append("file1", studentPhotoFile[0]);
+    //     formData.append("file2", studentAadhaarPhotoFile[0]);
+    //     formData.append("file3", studentDobPhotoFile[0]);
+    //     formData.append("file4", studentOtherDocumentPhotoFile[0]);
+    //     formData.append("file5", fatherPhotoFile[0]);
+    //     formData.append("file6", fatherAadhaarPhotoFile[0]);
+    //     formData.append("file7", fatherOtherDocumentPhotoFile[0]);
+    //     formData.append("file8", motherPhotoFile[0]);
+    //     formData.append("file9", motherAadhaarPhotoFile[0]);
+    //     formData.append("file10", motherOtherDocumentPhotoFile[0]);
+    //     formData.append("file11", guardianPhotoFile[0]);
+    //     formData.append("file12", guardianAadhaarPhotoFile[0]);
+    //     formData.append("file13", guardianOtherDocumentPhotoFile[0]);
+
+    var xhttp = new XMLHttpRequest();
+
+    // Set POST method and ajax file path
+    xhttp.open("POST", "php_move_upload_file.php", false);
+
+    // call on request changes state
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+            var response = this.responseText;
+            if (response == 1) {
+                alert("Upload successfully.");
+            } else {
+                alert("File not uploaded.");
+            }
+        }
+    };
+
+    // Send request with data
+    xhttp.send(formData);
+
+    // else {
+    // alert("Please select a file");
+    // return;
 
     if (count == 0) {
         // var studentDetails;
@@ -315,8 +498,8 @@ function uploadDocuments() {
         }
         // xmlhttp2.open("GET", "updateAdmittedStudentDetails.php?student=" + JSON.stringify(student), false);
         // xmlhttp2.send();
-        xmlhttp2.open("POST", "updateAdmittedStudentDetails.php?student=" + JSON.stringify(student), false);
+        xmlhttp2.open("POST", "updateAdmittedStudentDetails.php", false);
         xmlhttp2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlhttp2.send("student="+JSON.stringify(student));
+        xmlhttp2.send("student=" + JSON.stringify(student));
     }
 }

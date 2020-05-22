@@ -15,7 +15,8 @@ function getUser() {
     xmlhttp.send();
     addData();
 }
-function registrationNo(regno) {
+function registrationNo(regno, name) {
+    console.log(regno, name);
     var count = JSON.parse(window.localStorage.getItem("count"));
     count = 1;
     window.localStorage.setItem("count", JSON.stringify(count));
@@ -28,7 +29,7 @@ function registrationNo(regno) {
             document.location = 'admissionPage.html';
         }
     }
-    xmlhttp.open("GET", "getRegistrationNo.php?regno=" + JSON.stringify(regno), false);
+    xmlhttp.open("GET", "getRegistrationNo.php?regno=" + JSON.stringify(regno) + "&studentName=" + name, false);
     xmlhttp.send();
     //window.localStorage.setItem("regno", JSON.stringify(regno));
     //document.location = 'admissionPage.html';
@@ -161,7 +162,7 @@ function addData() {
         cell4.innerHTML = admittedStudents[i].division;
         cell5.innerHTML = admittedStudents[i].fatherContactNo;
         cell6.innerHTML = admittedStudents[i].admissionDate;
-        cell7.innerHTML = "<button class= 'btn' onclick=registrationNo(" + admittedStudents[i].registrationNo + ")>Modify</button>";
+        cell7.innerHTML = "<button class= 'btn' onclick=registrationNo(" + admittedStudents[i].registrationNo + "," + JSON.stringify(admittedStudents[i].name) + ")>Modify</button>";
         cell8.innerHTML = "<button class='btn'>print</button>";
         cell9.innerHTML = `<button class='btn' onclick=deleteStudent(${admittedStudents[i].registrationNo},'${admittedStudents[i].name}')>Delete</button>`;
     }

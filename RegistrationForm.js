@@ -143,7 +143,7 @@ function createStudent() {
         if (this.readyState == 4 && this.status == 200) {
             var res = this.responseText;
             if (res == 1) {
-                alert('successfully completed');
+                alert('successfully registered');
                 document.location = 'registrationList.html';
             }
             else {

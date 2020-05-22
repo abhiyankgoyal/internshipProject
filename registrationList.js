@@ -85,7 +85,8 @@ function deleteStudent(regno, name) {
     }
 }
 
-function makeAdmission(regno) {
+function makeAdmission(regno, name) {
+    console.log(regno, name);
     var count = 0;
     window.localStorage.setItem("count", JSON.stringify(count));
     console.log(`${regno}`);
@@ -99,7 +100,7 @@ function makeAdmission(regno) {
             document.location = 'admissionPage.html';
         }
     }
-    xmlhttp.open("GET", "getRegistrationNo.php?regno=" + JSON.stringify(regno), false);
+    xmlhttp.open("GET", "getRegistrationNo.php?regno=" + JSON.stringify(regno) + "&studentName=" + name, false);
     xmlhttp.send();
     //window.localStorage.setItem("regno", JSON.stringify(regno));
     //document.location = 'admissionPage.html';
@@ -169,19 +170,19 @@ function addData() {
         cell6.innerHTML = registeredStudents[i].admissionDate;
         cell7.innerHTML = "<button class= 'btn' onclick=registrationNo(" + registeredStudents[i].registrationNo + ")>Modify</button>";
         if (admittedStudents.length == 0) {
-            cell8.innerHTML = "<button class='btn' onclick=makeAdmission(" + registeredStudents[i].registrationNo + ")>Make Admission</button>";
+            cell8.innerHTML = `<button class='btn' onclick=makeAdmission(${registeredStudents[i].registrationNo},'${registeredStudents[i].name}')>Make Admission</button>`;
         }
         else {
             let count = 0;
             for (let j = 0; j < admittedStudents.length; j++) {
                 if (registeredStudents[i].registrationNo == admittedStudents[j].registrationNo) {
-                    cell8.innerHTML = "<button type='button' title='already admitted' class='disabledBtn' onclick=makeAdmission(" + registeredStudents[i].registrationNo + ") disabled>Make Admission</button>";
+                    cell8.innerHTML = "<button type='button' title='already admitted' class='disabledBtn' disabled>Make Admission</button>";
                     count++;
                     break;
                 }
             }
             if (count == 0) {
-                cell8.innerHTML = "<button class='btn' onclick=makeAdmission(" + registeredStudents[i].registrationNo + ")>Make Admission</button>";
+                cell8.innerHTML = `<button class='btn' onclick=makeAdmission(${registeredStudents[i].registrationNo},'${registeredStudents[i].name}')>Make Admission</button>`;
             }
 
         }
