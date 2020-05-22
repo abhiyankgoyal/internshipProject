@@ -1,4 +1,5 @@
 <?php
+
     $user = json_decode($_POST["user"]);
     $servername = 'localhost';
     $username = 'root';

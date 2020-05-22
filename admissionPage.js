@@ -163,18 +163,57 @@ function uploadDocuments() {
     student.parentState = document.getElementById('parentState').value;
     student.parentPincode = document.getElementById('parentPincode').value;
     student.studentPhoto = document.getElementById('studentPhoto').fileName;
+    if(student.studentPhoto == undefined){
+        student.studentPhoto = "";
+    }
     student.studentAadhaarPhoto = document.getElementById('studentAadhaarPhoto').fileName;
+    if(student.studentAadhaarPhoto == undefined){
+        student.studentAadhaarPhoto = "";
+    }
     student.studentDobPhoto = document.getElementById('studentDobPhoto').fileName;
+    if(student.studentDobPhoto == undefined){
+        student.studentDobPhoto = "";
+    }
     student.studentOtherDocumentPhoto = document.getElementById('studentOtherDocumentPhoto').fileName;
+    if(student.studentOtherDocumentPhoto == undefined){
+        student.studentOtherDocumentPhoto = "";
+    }
     student.fatherPhoto = document.getElementById('fatherPhoto').fileName;
+    if(student.fatherPhoto == undefined){
+        student.fatherPhoto = "";
+    }
     student.fatherAadhaarPhoto = document.getElementById('fatherAadhaarPhoto').fileName;
+    if(student.fatherAadhaarPhoto == undefined){
+        student.fatherAadhaarPhoto = "";
+    }
     student.fatherOtherDocumentPhoto = document.getElementById('fatherOtherDocumentPhoto').fileName;
+    if(student.fatherOtherDocumentPhoto == undefined){
+        student.fatherOtherDocumentPhoto = "";
+    }
     student.motherPhoto = document.getElementById('motherPhoto').fileName;
+    if(student.motherPhoto == undefined){
+        student.motherPhoto = "";
+    }
     student.motherAadhaarPhoto = document.getElementById('motherAadhaarPhoto').fileName;
+    if(student.motherAadhaarPhoto == undefined){
+        student.motherAadhaarPhoto = "";
+    }
     student.motherOtherDocumentPhoto = document.getElementById('motherOtherDocumentPhoto').fileName;
+    if(student.motherOtherDocumentPhoto == undefined){
+        student.motherOtherDocumentPhoto = "";
+    }
     student.guardianPhoto = document.getElementById('guardianPhoto').fileName;
+    if(student.guardianPhoto == undefined){
+        student.guardianPhoto = "";
+    }
     student.guardianAadhaarPhoto = document.getElementById('guardianAadhaarPhoto').fileName;
+    if(student.guardianAadhaarPhoto == undefined){
+        student.guardianAadhaarPhoto = "";
+    }
     student.guardianOtherDocumentPhoto = document.getElementById('guardianOtherDocumentPhoto').fileName;
+    if(student.guardianOtherDocumentPhoto == undefined){
+        student.guardianOtherDocumentPhoto = "";
+    }
 
 
     console.log(student);
@@ -332,10 +371,11 @@ function uploadDocuments() {
 
             var response = this.responseText;
             if (response == 1) {
-                alert("Upload successfully.");
-            } else {
-                alert("File not uploaded.");
+                alert("Documents Uploaded successfully.");
             }
+            //  else {
+            //     alert("File not uploaded.");
+            // }
         }
     };
 
@@ -409,7 +449,7 @@ function uploadDocuments() {
             if (this.readyState == 4 && this.status == 200) {
                 var res = this.responseText;
                 if (res == 1) {
-                    alert('admitted successfully');
+                    alert('Admitted Successfully');
                     document.location = 'admissionList.html';
                 }
                 else {
@@ -487,7 +527,7 @@ function uploadDocuments() {
             if (this.readyState == 4 && this.status == 200) {
                 var res = this.responseText;
                 if (res == 1) {
-                    alert('updated successfully');
+                    alert('Student Details Updated Successfully');
                     document.location = 'admissionList.html';
                 }
                 else {

@@ -62,30 +62,30 @@ function validate() {
         var xmlhttp;
         var xmlhttp = new XMLHttpRequest();
 
-        xmlhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            var res = this.responseText;
-            console.log(res);
-            if(res == 0){
-                document.getElementById("userErr").innerHTML = "this username is not available";
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var res = this.responseText;
+                console.log(res);
+                if (res == 0) {
+                    document.getElementById("userErr").innerHTML = "this username is not available";
+                }
+                else if (res == 1) {
+                    document.getElementById("duplicate").innerHTML = "account with this email already exists";
+                }
+                else if (res == 2) {
+                    document.getElementById("userErr").innerHTML = "this username is not available";
+                    document.getElementById("duplicate").innerHTML = "account with this email already exists";
+                }
+                else if (res == 3) {
+                    alert('account created successfully');
+                    document.location = 'Login.html';
+                }
+                else {
+                    alert(res);
+                    return;
+                }
+
             }
-            else if(res == 1){
-                document.getElementById("duplicate").innerHTML = "account with this email already exists";
-            }
-            else if(res == 2){
-                document.getElementById("userErr").innerHTML = "this username is not available";
-                document.getElementById("duplicate").innerHTML = "account with this email already exists";
-            }
-            else if(res == 3){
-                alert('account created successfully');
-                document.location = 'Login.html';
-            }
-            else{
-                alert(res);
-                return;
-            }
-            
-          }
         };
         //xmlhttp.open("GET", "Signup.php?user="+ JSON.stringify(user), true);
         //xmlhttp.send();
@@ -96,9 +96,7 @@ function validate() {
 
         // done
         //alert('account created successfully');
-       // document.location = 'Login.html';
+        // document.location = 'Login.html';
     }
 
 }
-
-

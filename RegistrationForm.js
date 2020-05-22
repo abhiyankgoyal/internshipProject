@@ -51,12 +51,12 @@ var students = [];
 //     document.getElementById("registrationNo").value = Number(students[students.length - 1].registrationNo) + 1;
 // }
 //function createUUID() {
-    // var id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    //     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-    //     return v.toString(16);
-    // });
-    // console.log(id);
-function generateRegistrationNo(){
+// var id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+//     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+//     return v.toString(16);
+// });
+// console.log(id);
+function generateRegistrationNo() {
     var num = Date.now();
     console.log(num);
     document.getElementById("registrationNo").value = num;
