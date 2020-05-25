@@ -37,7 +37,7 @@ class Student {
     }
 }
 
-var students = [];
+//var students = [];
 
 //function getRegistrationNumber() {
 // studentsJSON = window.localStorage.getItem("students");
