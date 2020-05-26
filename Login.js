@@ -38,7 +38,7 @@ function verify() {
                 document.getElementById("err").innerHTML = "username or password is incorrect";
             }
             else{
-                document.location = 'registrationForm.html';
+                document.location = 'RegistrationForm.html';
             }
         }
     };

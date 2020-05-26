@@ -10,10 +10,18 @@ body{
 	position:sticky;
 	top:0;
 	background-color: #333333;
+	
 }
 #logo{
 	float:left;
 	height:50px;
+	margin: 0 10px;
+}
+#Company-name {
+	color: #fff;
+	font-variant: small-caps;
+	float: left;
+	margin-left: 10px;
 }
 ul.nav{
 	list-style-type:none;

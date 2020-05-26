@@ -49,7 +49,9 @@ function logout() {
     xmlhttp.open("GET", "sessionLogout.php", true);
     xmlhttp.send();
 }
+
 function deleteStudent(regno, name) {
+    debugger;
     //function deleteStudent(index) {
     // var studentsJson = window.localStorage.getItem("students");
     // var students = JSON.parse(studentsJson);
@@ -170,25 +172,26 @@ function addData() {
         cell6.innerHTML = registeredStudents[i].admissionDate;
         cell7.innerHTML = "<button class= 'btn' onclick=registrationNo(" + registeredStudents[i].registrationNo + ")>Modify</button>";
         if (admittedStudents.length == 0) {
-            cell8.innerHTML = `<button class='btn' onclick=makeAdmission(${registeredStudents[i].registrationNo},'${registeredStudents[i].name}')>Make Admission</button>`;
+            cell8.innerHTML = '<button class="btn" onclick="makeAdmission('+ registeredStudents[i].registrationNo+',\''+registeredStudents[i].name+'\')">Make Admission</button>';
         }
         else {
             let count = 0;
             for (let j = 0; j < admittedStudents.length; j++) {
                 if (registeredStudents[i].registrationNo == admittedStudents[j].registrationNo) {
-                    cell8.innerHTML = "<button type='button' title='already admitted' class='disabledBtn' disabled>Make Admission</button>";
+                    cell8.innerHTML = '<button class="disabledBtn" disabled  title="already admitted">Make Admission</button>';
+                    // cell8.innerHTML = "<button type='button' title='already admitted' class='disabledBtn' disabled>Make Admission</button>";
                     count++;
                     break;
                 }
             }
             if (count == 0) {
-                cell8.innerHTML = `<button class='btn' onclick=makeAdmission(${registeredStudents[i].registrationNo},'${registeredStudents[i].name}')>Make Admission</button>`;
+                cell8.innerHTML = '<button class="btn" onclick="makeAdmission('+ registeredStudents[i].registrationNo+',\''+registeredStudents[i].name+'\')">Make Admission</button>';
             }
 
         }
+        
         cell9.innerHTML = "<button class='btn'>print</button>";
-      //  cell10.innerHTML = "<button class='btn' onclick=deleteStudent(" + registeredStudents[i].registrationNo + "," + registeredStudents[i].name + ")>Delete</button>";
-      cell10.innerHTML = `<button class='btn' onclick=deleteStudent(${registeredStudents[i].registrationNo},'${registeredStudents[i].name}')>Delete</button>`;
+        cell10.innerHTML = '<button class="btn" onclick="deleteStudent('+ registeredStudents[i].registrationNo+',\''+ registeredStudents[i].name +'\')">Delete</button>';
     }
 
     if (registeredStudents.length < 6) {
