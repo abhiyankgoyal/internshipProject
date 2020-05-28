@@ -11,7 +11,8 @@ body{
 }
 #logo{
 	float:left;
-	height:50px;
+    height:50px;
+    margin: 0 10px;
 }
 #Company-name {
 	color: #fff;
